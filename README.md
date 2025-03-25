@@ -81,6 +81,3 @@ sudo setcap cap_net_raw=eip ./nico
 
 ---
 
-## 📜 Licença
-
-MIT License © [dynasmon]
