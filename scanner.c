@@ -1,9 +1,9 @@
+#include <netpacket/packet.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <arpa/inet.h>
 #include <net/if.h>
-#include <netpacket/packet.h>
 #include <netinet/in.h>
 #include <netinet/ether.h>
 #include <netinet/if_ether.h>
@@ -118,10 +118,9 @@ int main() {
     pthread_detach(spin);
 
     // Abre socket raw
-    int sock = socket(AF_INET, SOCK_RAW, htons(ETH_P_ARP));
+    int sock = socket(AF_PACKET, SOCK_RAW, htons(ETH_P_ARP));
     if (sock < 0) {
         perror("socket");
-        return 1;
     }
 
     // Descobre ifindex
