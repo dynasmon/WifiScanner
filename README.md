@@ -8,7 +8,6 @@ O **NicoScanner** é uma ferramenta escrita em linguagem C para escanear redes l
 
 - 🚀 Scanner rápido utilizando pacotes ARP.
 - 📡 Suporte a interfaces Ethernet e Wi-Fi (`eth0`, `wlan0`, `ens33`, etc).
-- 🔄 Exibição animada do progresso de análise.
 - 📝 Salva automaticamente os resultados em um arquivo `results.json`.
 
 ---
