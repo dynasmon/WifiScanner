@@ -13,6 +13,7 @@
 #include <unistd.h>
 #include <pthread.h>
 #include <signal.h>
+#include "../include/utils.h"
 
 #ifndef NI_MAXHOST
 #define NI_MAXHOST 1025
@@ -22,11 +23,6 @@
 
 static volatile int keepSpinner = 1;
 static volatile int stopFlag = 0;
-
-typedef struct {
-    char ip[INET_ADDRSTRLEN];
-    char mac[18];
-} Device;
 
 Device found[MAX_IPS];
 int foundCount = 0;
@@ -67,6 +63,8 @@ static void *spinner_thread(void *arg) {
 
         idx = (idx + 1) % 4;
     }
+    printf("\b \n");
+    fflush(stdout);
     return NULL;
 }
 
@@ -106,11 +104,11 @@ int main() {
 
     char iface[IFNAMSIZ];
     printf("Interface (ex: eth0, wlan0): ");
-    scanf("%s", iface);
+    scanf("%15s", iface);
 
     char prefix[16];
     printf("Prefixo da rede (ex: 192.168.0): ");
-    scanf("%s", prefix);
+    scanf("%15s", prefix);
 
     // Inicia spinner
     pthread_t spin;
@@ -180,9 +178,7 @@ int main() {
     // Escuta respostas
     while (!stopFlag) {
         unsigned char recvbuf[60];
-        struct sockaddr saddr;
-        socklen_t saddr_len = sizeof(saddr);
-        int len = recvfrom(sock, recvbuf, sizeof(recvbuf), 0, &saddr, &saddr_len);
+        int len = recvfrom(sock, recvbuf, sizeof(recvbuf), 0, NULL, NULL);
         if (len < 0) {
             // Timeout ou sinal => encerra
             break;
@@ -222,6 +218,8 @@ int main() {
     for (int i = 0; i < foundCount; i++) {
         printf("IP: %s  MAC: %s\n", found[i].ip, found[i].mac);
     }
+
+    save_results(found, foundCount, "results.json");
 
     close(sock);
     return 0;

@@ -35,7 +35,7 @@ cd nicoscanner
 ### 2. Compile o código-fonte:
 
 ```bash
-gcc -o nico scanner.c -lpthread
+make
 ```
 
 ### 3. (Opcional) Permitir execução sem `sudo`:
