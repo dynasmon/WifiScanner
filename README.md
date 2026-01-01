@@ -1,18 +1,18 @@
-# 🔍 NicoScanner — ARP Network Scanner em C
+# NicoScanner — ARP Network Scanner em C
 
 O **NicoScanner** é uma ferramenta escrita em linguagem C para escanear redes locais utilizando requisições ARP. Ele identifica rapidamente dispositivos conectados, exibindo IPs e endereços MAC dos equipamentos ativos.
 
 ---
 
-## ✨ Recursos
+## Recursos
 
-- 🚀 Scanner rápido utilizando pacotes ARP.
-- 📡 Suporte a interfaces Ethernet e Wi-Fi (`eth0`, `wlan0`, `ens33`, etc).
-- 📝 Salva automaticamente os resultados em um arquivo `results.json`.
+- Scanner rápido utilizando pacotes ARP.
+- Suporte a interfaces Ethernet e Wi-Fi (`eth0`, `wlan0`, `ens33`, etc).
+- Salva automaticamente os resultados em um arquivo `results.json`.
 
 ---
 
-## 📦 Dependências
+## Dependências
 
 Instale as dependências necessárias com:
 
@@ -23,7 +23,7 @@ sudo apt install build-essential libc-dev
 
 ---
 
-## 🚀 Instalação
+## Instalação
 
 ### 1. Clone o repositório:
 
@@ -46,7 +46,7 @@ sudo setcap cap_net_raw=eip ./nico
 
 ---
 
-## ▶️ Como usar
+## Como usar
 
 Execute o programa com:
 
@@ -63,7 +63,7 @@ Prefixo da rede (ex: 192.168.0): 192.168.0
 
 ---
 
-## ❗ Permissões
+## Permissões
 
 Caso apareça o erro `socket: Operation not permitted`, execute com `sudo` ou configure as permissões com:
 
@@ -73,10 +73,11 @@ sudo setcap cap_net_raw=eip ./nico
 
 ---
 
-## 🧠 Observações
+## Observações
 
 - O programa utiliza pacotes ARP brutos, portanto pode não funcionar corretamente em ambientes virtuais sem modo "bridge" ativado.
 - Idealmente, execute em distribuições Linux reais ou máquinas virtuais com acesso real à rede local.
 
 ---
+
 
